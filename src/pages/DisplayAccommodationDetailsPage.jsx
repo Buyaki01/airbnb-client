@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 const DisplayAccommodationDetailsPage = () => {
   const {id} = useParams()
   const [accomodation, setAccomodation] = useState(null)
+  const [showAllPhotos, setShowAllPhotos] = useState(false)
   
   useEffect(() => {
     const showAccomodation = async () => {
@@ -19,6 +20,28 @@ const DisplayAccommodationDetailsPage = () => {
   }, [id])
 
   if(!accomodation) return ''
+
+  if (showAllPhotos) {
+    return(
+      <div className="absolute inset-0 bg-white min-h-screen"> 
+        <div className="p-8 grid gap-4">
+          <div>
+            <button onClick={() => setShowAllPhotos(false)} className="fixed bg-transparent py-2 px-4 rounded-2xl"> 
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+          </div>
+          {accomodation?.photos?.length > 0 && accomodation.photos.map(photo => (
+            <div> 
+              <img className="min-w-full object-cover" src={`http://localhost:4000/images/${photo}`} alt="" />
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return(
     <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
       <h1 className="text-3xl">{accomodation.title}</h1>
@@ -34,23 +57,23 @@ const DisplayAccommodationDetailsPage = () => {
           <div>
             {accomodation.photos?.[0] && (
               <div>
-                <img className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/images/${accomodation.photos?.[0]}`} alt="" />
+                <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/images/${accomodation.photos?.[0]}`} alt="" />
               </div>
             )}
           </div>
           <div className="grid">
             {accomodation.photos?.[1] && (
-              <img className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/images/${accomodation.photos?.[1]}`} alt="" />
+              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/images/${accomodation.photos?.[1]}`} alt="" />
             )}
 
             <div className="overflow-hidden">
               {accomodation.photos?.[2] && (
-                <img className="aspect-square cursor-pointer object-cover relative top-2" src={`http://localhost:4000/images/${accomodation.photos?.[2]}`} alt="" />
+                <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover relative top-2" src={`http://localhost:4000/images/${accomodation.photos?.[2]}`} alt="" />
               )}
             </div>
           </div>
         </div>
-        <button className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow shadow-md shadow-gray-500">
+        <button onClick={() => setShowAllPhotos(true)} className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl shadow shadow-md shadow-gray-500">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
           </svg>
