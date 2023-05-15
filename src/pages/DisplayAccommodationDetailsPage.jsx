@@ -10,6 +10,8 @@ const DisplayAccommodationDetailsPage = () => {
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [noOfGuests, setNoOfGuests] = useState(1)
+  const [name, setName] = useState('')
+  const [mobileNumber, setMobileNumber] = useState('')
 
   let noOfNights = 0
   if (checkIn && checkOut) {
@@ -115,10 +117,19 @@ const DisplayAccommodationDetailsPage = () => {
                 </div>
               </div>
               <div className="py-3 px-4 border-t">
-                  <label htmlFor="noOfGuests"> Number of guests: </label>
-                  <input type="number" id="noOfGuests" value={noOfGuests} onChange={e => setNoOfGuests(e.target.value)} />
-                </div>
+                <label htmlFor="noOfGuests"> Number of guests: </label>
+                <input type="number" id="noOfGuests" value={noOfGuests} onChange={e => setNoOfGuests(e.target.value)} />
+              </div>
             </div>
+            {noOfNights > 0 && (
+              <div className="py-3 px-4 border-t">
+                <label htmlFor="guestName"> Your full name: </label>
+                <input type="text" id="guestName" value={name} onChange={e => setName(e.target.value)} />
+
+                <label htmlFor="guestMobile"> Phone Number: </label>
+                <input type="tel" id="guestMobile" value={mobileNumber} onChange={e => setMobileNumber(e.target.value)} />
+              </div>
+            )}
             <button className="primary mt-4"> 
               Book this place 
               {noOfNights > 0 && (
