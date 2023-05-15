@@ -1,4 +1,5 @@
 import axios from "axios"
+import { differenceInCalendarDays } from "date-fns"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
@@ -6,6 +7,14 @@ const DisplayAccommodationDetailsPage = () => {
   const {id} = useParams()
   const [accomodation, setAccomodation] = useState(null)
   const [showAllPhotos, setShowAllPhotos] = useState(false)
+  const [checkIn, setCheckIn] = useState('')
+  const [checkOut, setCheckOut] = useState('')
+  const [noOfGuests, setNoOfGuests] = useState(1)
+
+  let noOfNights = 0
+  if (checkIn && checkOut) {
+    noOfNights = differenceInCalendarDays(new Date (checkOut), new Date (checkIn))
+  }
   
   useEffect(() => {
     const showAccomodation = async () => {
@@ -98,19 +107,24 @@ const DisplayAccommodationDetailsPage = () => {
               <div className="flex">
                 <div className="py-3 px-4">
                   <label htmlFor="checkIn"> Check In: </label>
-                  <input type="date" id="checkIn" />
+                  <input type="date" id="checkIn" value={checkIn} onChange={e => setCheckIn(e.target.value)} />
                 </div>
                 <div className="py-3 px-4 border-l">
                   <label htmlFor="checkOut"> Check Out: </label>
-                  <input type="date" id="checkOut" />
+                  <input type="date" id="checkOut" value={checkOut} onChange={e => setCheckOut(e.target.value)} />
                 </div>
               </div>
               <div className="py-3 px-4 border-t">
                   <label htmlFor="noOfGuests"> Number of guests: </label>
-                  <input type="number" id="noOfGuests" value={1} />
+                  <input type="number" id="noOfGuests" value={noOfGuests} onChange={e => setNoOfGuests(e.target.value)} />
                 </div>
             </div>
-            <button className="primary mt-4"> Book this place </button>
+            <button className="primary mt-4"> 
+              Book this place 
+              {noOfNights > 0 && (
+                <span> ${noOfNights * accomodation.price }</span>
+              )}
+            </button>
           </div>
         </div>
       </div>
