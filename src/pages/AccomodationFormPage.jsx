@@ -24,7 +24,7 @@ const AccomodationFormPage = () => {
         return
       }
       
-      const response = await axios.get(`/accomodations/${id}`)
+      const response = await axios.get(`/accomodation/${id}`)
       if (response.data) {
         const {data} = response
         
