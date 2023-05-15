@@ -1,7 +1,7 @@
 import axios from "axios"
 import { differenceInCalendarDays } from "date-fns"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const DisplayAccommodationDetailsPage = () => {
   const {id} = useParams()
@@ -12,10 +12,20 @@ const DisplayAccommodationDetailsPage = () => {
   const [noOfGuests, setNoOfGuests] = useState(1)
   const [name, setName] = useState('')
   const [mobileNumber, setMobileNumber] = useState('')
+  const navigate = useNavigate()
 
   let noOfNights = 0
   if (checkIn && checkOut) {
     noOfNights = differenceInCalendarDays(new Date (checkOut), new Date (checkIn))
+  }
+
+  const bookThisPlace = async () => {
+    const response = await axios.post('/bookings', {accomodationId:accomodation._id, checkIn, 
+      checkOut, noOfGuests, name, 
+      mobileNumber, price:noOfNights * accomodation.price
+    })
+    const bookingId = response.data._id
+    navigate(`/account/bookings/${bookingId}`)
   }
   
   useEffect(() => {
@@ -130,7 +140,7 @@ const DisplayAccommodationDetailsPage = () => {
                 <input type="tel" id="guestMobile" value={mobileNumber} onChange={e => setMobileNumber(e.target.value)} />
               </div>
             )}
-            <button className="primary mt-4"> 
+            <button onClick={bookThisPlace} className="primary mt-4"> 
               Book this place 
               {noOfNights > 0 && (
                 <span> ${noOfNights * accomodation.price }</span>

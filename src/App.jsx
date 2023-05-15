@@ -25,6 +25,7 @@ function App() {
           <Route path='/register' element={<RegisterPage/>}/>
           <Route path='/account/profile' element={<ProfilePage/>}/>
           <Route path='/account/bookings' element={<BookingsPage/>}/>
+          <Route path='/account/bookings/:id' element={<BookingsPage/>}/>
           <Route path='/account/accomodations' element={<AccomodationsPage/>}/>
           <Route path='/account/accomodations/new' element={<AccomodationFormPage/>}/>
           <Route path='/account/accomodations/edit/:id' element={<AccomodationFormPage/>}/>
