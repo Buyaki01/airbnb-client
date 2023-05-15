@@ -51,7 +51,7 @@ const AccomodationFormPage = () => {
       checkIn, checkOut, maxGuests, price
     }
     if (id) {
-      await axios.put(`/accomodations/${id}`, { ...accomodationData })
+      await axios.put(`/accomodation/${id}`, { ...accomodationData })
     } else {
       await axios.post('/accomodations', { ...accomodationData })
     }
