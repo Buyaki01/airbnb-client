@@ -1,7 +1,8 @@
 import axios from "axios"
 import { differenceInCalendarDays } from "date-fns"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { UserContext } from "../UserContext"
 
 const DisplayAccommodationDetailsPage = () => {
   const {id} = useParams()
@@ -13,6 +14,13 @@ const DisplayAccommodationDetailsPage = () => {
   const [name, setName] = useState('')
   const [mobileNumber, setMobileNumber] = useState('')
   const navigate = useNavigate()
+  const {user} = useContext(UserContext)
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name)
+    }
+  }, [user])
 
   let noOfNights = 0
   if (checkIn && checkOut) {
