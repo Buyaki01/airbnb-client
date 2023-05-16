@@ -11,6 +11,7 @@ import AccomodationsPage from './pages/AccomodationsPage'
 import BookingsPage from './pages/BookingsPage'
 import AccomodationFormPage from './pages/AccomodationFormPage'
 import DisplayAccommodationDetailsPage from './pages/DisplayAccommodationDetailsPage'
+import ShowBookingPage from './pages/ShowBookingPage'
 
 axios.defaults.baseURL = 'http://localhost:4000'
 axios.defaults.withCredentials = true
@@ -25,7 +26,7 @@ function App() {
           <Route path='/register' element={<RegisterPage/>}/>
           <Route path='/account/profile' element={<ProfilePage/>}/>
           <Route path='/account/bookings' element={<BookingsPage/>}/>
-          <Route path='/account/bookings/:id' element={<BookingsPage/>}/>
+          <Route path='/account/bookings/:id' element={<ShowBookingPage/>}/>
           <Route path='/account/accomodations' element={<AccomodationsPage/>}/>
           <Route path='/account/accomodations/new' element={<AccomodationFormPage/>}/>
           <Route path='/account/accomodations/edit/:id' element={<AccomodationFormPage/>}/>
