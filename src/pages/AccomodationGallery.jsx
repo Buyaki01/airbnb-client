@@ -1,4 +1,5 @@
 import { useState } from "react"
+import baseURL from "../config/ApiConfig"
 
 const AccomodationGallery = ({accomodation}) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false)
@@ -19,9 +20,9 @@ const AccomodationGallery = ({accomodation}) => {
               </svg>
             </button>
           </div>
-          {accomodation?.photos?.length > 0 && accomodation.photos.map(photo => (
-            <div> 
-              <img className="min-w-full object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${photo}`} alt="" />
+          {accomodation?.photos?.length > 0 && accomodation.photos.map((photo, index) => (
+            <div key={index}> 
+              <img className="min-w-full object-cover" src={`${baseURL}/images/${photo}`} alt="" />
             </div>
           ))}
         </div>
@@ -35,18 +36,18 @@ const AccomodationGallery = ({accomodation}) => {
         <div>
           {photos?.[0] && (
             <div>
-              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[0]}`} alt="" />
+              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`${baseURL}/images/${accomodation.photos?.[0]}`} alt="" />
             </div>
           )}
         </div>
         <div className="grid">
           {photos?.[1] && (
-            <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[1]}`} alt="" />
+            <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`${baseURL}/images/${accomodation.photos?.[1]}`} alt="" />
           )}
 
           <div className="overflow-hidden">
             {photos?.[2] && (
-              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover relative top-2" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[2]}`} alt="" />
+              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover relative top-2" src={`${baseURL}/images/${accomodation.photos?.[2]}`} alt="" />
             )}
           </div>
         </div>
