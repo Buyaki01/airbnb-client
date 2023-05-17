@@ -17,9 +17,9 @@ const BookingsPage = () => {
 
   return(
     <div>
-      <div className="">
+      <div>
         {bookings?.length > 0 && bookings.map(booking => (
-          <Link to={`/account/bookings/${booking._id}`} key={booking._id} className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden">
+          <Link to={`/account/bookings/${booking._id}`} key={booking._id} className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mt-3">
               <div className="w-48">
                 <img className="object-cover" src={`http://localhost:4000/images/${booking.accomodationId.photos[0]}`} alt="" />
               </div>
