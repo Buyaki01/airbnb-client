@@ -21,7 +21,7 @@ const AccomodationGallery = ({accomodation}) => {
           </div>
           {accomodation?.photos?.length > 0 && accomodation.photos.map(photo => (
             <div> 
-              <img className="min-w-full object-cover" src={`http://localhost:4000/images/${photo}`} alt="" />
+              <img className="min-w-full object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${photo}`} alt="" />
             </div>
           ))}
         </div>
@@ -35,18 +35,18 @@ const AccomodationGallery = ({accomodation}) => {
         <div>
           {photos?.[0] && (
             <div>
-              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/images/${accomodation.photos?.[0]}`} alt="" />
+              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[0]}`} alt="" />
             </div>
           )}
         </div>
         <div className="grid">
           {photos?.[1] && (
-            <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/images/${accomodation.photos?.[1]}`} alt="" />
+            <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[1]}`} alt="" />
           )}
 
           <div className="overflow-hidden">
             {photos?.[2] && (
-              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover relative top-2" src={`http://localhost:4000/images/${accomodation.photos?.[2]}`} alt="" />
+              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover relative top-2" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[2]}`} alt="" />
             )}
           </div>
         </div>
