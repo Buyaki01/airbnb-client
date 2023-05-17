@@ -13,7 +13,7 @@ import AccomodationFormPage from './pages/AccomodationFormPage'
 import DisplayAccommodationDetailsPage from './pages/DisplayAccommodationDetailsPage'
 import ShowBookingPage from './pages/ShowBookingPage'
 
-axios.defaults.baseURL = 'http://localhost:4000'
+axios.defaults.baseURL = 'https://api-airbnb-gmqf.onrender.com'
 axios.defaults.withCredentials = true
 
 function App() {

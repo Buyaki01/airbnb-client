@@ -20,7 +20,7 @@ const BookingsPage = () => {
         {bookings?.length > 0 && bookings.map(booking => (
           <Link to={`/account/bookings/${booking._id}`} key={booking._id} className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mt-3">
               <div className="w-48">
-                <img className="object-cover" src={`http://localhost:4000/images/${booking.accomodationId.photos[0]}`} alt="" />
+                <img className="object-cover" src={`https://api-airbnb-gmqf.onrender.com/images/${booking.accomodationId.photos[0]}`} alt="" />
               </div>
               <div className="py-3 pr-3 grow">
                 <h2 className="text-xl">{booking.accomodationId.title}</h2>

@@ -29,7 +29,7 @@ const AccomodationsPage = () => {
           <Link to={'/account/accomodations/edit/'+place._id } className="flex cursor-pointer gap-4 bg-gray-100 p-4 mb-4 rounded-2xl" key={place._id}>
             <div className="flex w-32 h-32 bg-gray-300 grow flex-shrink-0">
               {place.photos.length > 0 && (
-                <img className="object-cover" src={'http://localhost:4000/images/'+place.photos[0]} alt="" />
+                <img className="object-cover" src={'https://api-airbnb-gmqf.onrender.com/images/'+place.photos[0]} alt="" />
               )} 
             </div>
             <div className="flex-grow-0">
