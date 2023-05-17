@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import baseURL from "../config/ApiConfig"
 
 const IndexPage = () => {
   const [accomodations, setAccomodations] = useState([])
@@ -19,7 +20,7 @@ const IndexPage = () => {
         <Link to={`/accomodation/${accomodation._id}`} key={accomodation._id}>
           <div className="bg-gray-500 mb-2 rounded-2xl flex"> 
             {accomodation.photos?.[0] && (
-              <img className="rounded-2xl object-cover aspect-square" src={`https://api-airbnb-gmqf.onrender.com/images/${accomodation.photos?.[0]}`} alt="" />
+              <img className="rounded-2xl object-cover aspect-square" src={`${baseURL}/images/${accomodation.photos?.[0]}`} alt="" />
             )}
           </div>
           <h2 className="font-semibold">{accomodation.address}</h2>
