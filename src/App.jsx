@@ -12,9 +12,8 @@ import BookingsPage from './pages/BookingsPage'
 import AccomodationFormPage from './pages/AccomodationFormPage'
 import DisplayAccommodationDetailsPage from './pages/DisplayAccommodationDetailsPage'
 import ShowBookingPage from './pages/ShowBookingPage'
-import baseURL from './config/ApiConfig'
 
-axios.defaults.baseURL = baseURL
+axios.defaults.baseURL = 'https://airbnb-api-omega.vercel.app'
 axios.defaults.withCredentials = true
 
 function App() {
