@@ -1,3 +1,3 @@
-const baseURL = 'https://airbnb-backend-b9nv.onrender.com'
+const baseURL = 'https://airbnb-api-omega.vercel.app'
 
 export default baseURL
