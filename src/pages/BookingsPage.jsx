@@ -9,7 +9,9 @@ const BookingsPage = () => {
 
   useEffect(() => {
     const getBookings = async () => {
-      const response = await axios.get('/bookings')
+      const response = await axios.get('/bookings', {
+        headers: {"Access-Control-Allow-Origin": "*"}
+      })
       setBookings(response.data)
     }
     getBookings()
