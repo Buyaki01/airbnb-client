@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useNavigate, useParams } from "react-router-dom";
-import PhotosSection from "./PhotosSection";
-import FeaturesSection from "./FeaturesSection";
+import { useNavigate, useParams } from "react-router-dom"
+import PhotosSection from "./PhotosSection"
+import FeaturesSection from "./FeaturesSection"
 
 const AccomodationFormPage = () => {
   const {id} = useParams()
