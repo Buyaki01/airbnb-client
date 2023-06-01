@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import axios from "axios"
 import { UserContext } from "../UserContext"
 import { useNavigate } from "react-router-dom"
+import baseURL from "../config/ApiConfig"
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
@@ -13,7 +14,7 @@ const LoginPage = () => {
   async function handleLoginSubmit(e) {
     e.preventDefault()
     try {
-      const response = await axios.post("/login", { email, password })
+      const response = await axios.post(`${baseURL}/login`, { email, password })
       setUser(response.data);
       alert("Login successful");
 

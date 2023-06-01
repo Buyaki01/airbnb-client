@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import baseURL from "./config/ApiConfig";
 
 export const UserContext = createContext({})
 
@@ -9,7 +10,7 @@ export const UserContextProvider = ({children}) => {
   useEffect(() => {
     const fetchUser = async () => {
       if (!user) {
-        const response = await axios.get('/profile')
+        const response = await axios.get(`${baseURL}/profile`)
         setUser(response.data)
         setLoading(true)
       }
