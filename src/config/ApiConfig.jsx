@@ -1,3 +1,3 @@
-const baseURL = 'https://airbnb-api-omega.vercel.app'
+const baseURL = 'http://localhost:3000'
 
 export default baseURL
