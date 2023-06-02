@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { UserContext } from "../UserContext"
 import baseURL from "../config/ApiConfig"
+import Cookies from "js-cookie"
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
@@ -23,6 +24,10 @@ const LoginPage = () => {
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token)
+        Cookies.set("token", response.data.token, {
+          sameSite: "none",
+          secure: true,
+        })
         alert("Login successful")
         navigate("/")
       } else {
