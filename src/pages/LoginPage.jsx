@@ -1,29 +1,27 @@
-import { Link, Navigate } from "react-router-dom"
-import { useContext, useState } from "react"
-import axios from "axios"
-import { UserContext } from "../UserContext"
-import { useNavigate } from "react-router-dom"
-import baseURL from "../config/ApiConfig"
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../UserContext";
+import baseURL from "../config/ApiConfig";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const { setUser } = useContext(UserContext)
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   async function handleLoginSubmit(e) {
-    e.preventDefault()
-    try {
-      const response = await axios.post(`${baseURL}/login`, { email, password })
-      setUser(response.data);
+    e.preventDefault();
+    
+    const response = await axios.post(`${baseURL}/login`, { email, password });
+    setUser(response.data);
+
+    if (response.data.token) {
+      localStorage.setItem('token', response.data.token)
       alert("Login successful");
-
-      const token = response.data.token
-      localStorage.setItem("token", token)
-
-      navigate("/")
-    } catch (e) {
-      alert("Login failed")
+      navigate("/");
+    } else {
+      alert("Login failed");
     }
   }
 

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import AddressLink from "./AddressLink"
 import BookingDates from "./BookingDates"
 import AccomodationGallery from "./AccomodationGallery"
+import baseURL from "../config/ApiConfig"
 
 const ShowBookingPage = () => {
   const { id } = useParams()
@@ -13,7 +14,7 @@ const ShowBookingPage = () => {
     const showBooking = async () => {
       if (id) {
         try {
-          const response = await axios.get(`/bookings/${id}`, {
+          const response = await axios.get(`${baseURL}/bookings/${id}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
