@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import BookingDates from "./BookingDates"
-import api from "../api/axios"
-import jwt_decode from "jwt-decode"
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import BookingDates from "./BookingDates";
+import api from "../api/axios";
+import jwt_decode from "jwt-decode";
 
 const BookingsPage = () => {
   const [bookings, setBookings] = useState([]);
@@ -29,12 +29,12 @@ const BookingsPage = () => {
       };
       getBookings();
     }
-  }, [navigate]);  
+  }, [navigate]);
 
   return (
     <div>
       <div>
-        {bookings.length > 0 &&
+        {bookings.length > 0 ? (
           bookings.map((booking) => (
             <Link
               to={`/account/bookings/${booking._id}`}
@@ -60,7 +60,14 @@ const BookingsPage = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          ))
+        ) : (
+          <p className="text-center">No bookings found. Have an account? 
+            <Link to={'/login'} className="link ml-2 underline">
+              Login
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );
