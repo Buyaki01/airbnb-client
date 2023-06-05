@@ -4,7 +4,6 @@ import IndexPage from './pages/IndexPage'
 import LoginPage from './pages/LoginPage'
 import Layout from './Layout'
 import RegisterPage from './pages/RegisterPage'
-import axios from 'axios'
 import { UserContextProvider } from './UserContext'
 import ProfilePage from './pages/ProfilePage'
 import AccomodationsPage from './pages/AccomodationsPage'
@@ -12,10 +11,6 @@ import BookingsPage from './pages/BookingsPage'
 import AccomodationFormPage from './pages/AccomodationFormPage'
 import DisplayAccommodationDetailsPage from './pages/DisplayAccommodationDetailsPage'
 import ShowBookingPage from './pages/ShowBookingPage'
-import baseURL from './config/ApiConfig'
-
-axios.defaults.baseURL = baseURL
-axios.defaults.withCredentials = true
 
 function App() {
   return (

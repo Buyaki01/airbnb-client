@@ -1,7 +1,6 @@
-import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import baseURL from "../config/ApiConfig"
+import api from "../api/axios"
 
 const RegisterPage = () => {
   const [name, setName] = useState('') 
@@ -12,7 +11,7 @@ const RegisterPage = () => {
   async function registerUser (e) {
     e.preventDefault()
     try{
-      await axios.post(`${baseURL}/register`, {
+      await api.post('/register', {
         name,
         email,
         password

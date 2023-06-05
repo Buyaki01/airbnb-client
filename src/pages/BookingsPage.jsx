@@ -1,9 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import BookingDates from "./BookingDates";
-import baseURL from "../config/ApiConfig";
-import jwt_decode from "jwt-decode";
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import BookingDates from "./BookingDates"
+import api from "../api/axios"
+import jwt_decode from "jwt-decode"
 
 const BookingsPage = () => {
   const [bookings, setBookings] = useState([]);
@@ -18,7 +17,7 @@ const BookingsPage = () => {
     } else {
       const getBookings = async () => {
         try {
-          const response = await axios.get(`${baseURL}/bookings`, {
+          const response = await api.get('/bookings', {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -45,7 +44,7 @@ const BookingsPage = () => {
               <div className="w-48">
                 <img
                   className="object-cover"
-                  src={`${baseURL}/images/${booking.accomodationId.photos[0]}`}
+                  src={`${api.defaults.baseURL}/images/${booking.accomodationId.photos[0]}`}
                   alt=""
                 />
               </div>

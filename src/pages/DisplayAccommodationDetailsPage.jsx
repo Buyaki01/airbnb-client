@@ -1,8 +1,8 @@
-import axios from "axios"
 import { differenceInCalendarDays } from "date-fns"
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { UserContext } from "../UserContext"
+import api from "../api/axios"
 import AddressLink from "./AddressLink"
 import AccomodationGallery from "./AccomodationGallery"
 
@@ -29,7 +29,7 @@ const DisplayAccommodationDetailsPage = () => {
   }
 
   const bookThisPlace = async () => {
-    const response = await axios.post('/bookings', {accomodationId:accomodation._id, checkIn, 
+    const response = await api.post('/bookings', {accomodationId:accomodation._id, checkIn, 
       checkOut, noOfGuests, name, 
       mobileNumber, price:noOfNights * accomodation.price
     })
@@ -43,7 +43,7 @@ const DisplayAccommodationDetailsPage = () => {
       {
         return
       }
-      const response = await axios.get(`/accomodation/${id}`)
+      const response = await api.get(`/accomodation/${id}`)
       setAccomodation(response.data)
     }
     showAccomodation()

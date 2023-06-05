@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { useNavigate, useParams } from "react-router-dom"
+import api from "../api/axios"
 import PhotosSection from "./PhotosSection"
 import FeaturesSection from "./FeaturesSection"
 
@@ -24,7 +24,7 @@ const AccomodationFormPage = () => {
         return
       }
       
-      const response = await axios.get(`/accomodation/${id}`)
+      const response = await api.get(`/accomodation/${id}`)
       if (response.data) {
         const {data} = response
         
@@ -51,9 +51,9 @@ const AccomodationFormPage = () => {
       checkIn, checkOut, maxGuests, price
     }
     if (id) {
-      await axios.put(`/accomodation/${id}`, { ...accomodationData })
+      await api.put(`/accomodation/${id}`, { ...accomodationData })
     } else {
-      await axios.post('/accomodations', { ...accomodationData })
+      await api.post('/accomodations', { ...accomodationData })
     }
     navigate('/account/accomodations')
   }

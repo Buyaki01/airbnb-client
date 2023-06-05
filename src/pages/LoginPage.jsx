@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import axios from "axios"
 import { UserContext } from "../UserContext"
-import baseURL from "../config/ApiConfig"
+import api from "../api/axios"
 
 const LoginPage = () => {
   const [email, setEmail] = useState("")
@@ -14,8 +13,8 @@ const LoginPage = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(
-        `${baseURL}/login`,
+      const response = await api.post(
+        '/login',
         { email, password },
         { withCredentials: true }
       )

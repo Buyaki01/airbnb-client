@@ -1,8 +1,7 @@
 import { useContext, useState } from "react"
 import { UserContext } from "../UserContext"
 import { Navigate} from "react-router-dom"
-import axios from "axios"
-import baseURL from "../config/ApiConfig"
+import api from "../api/axios"
 
 const ProfilePage = () => {
   const {loading, user, setUser} = useContext(UserContext)
@@ -10,7 +9,7 @@ const ProfilePage = () => {
   const [redirect, setRedirect] = useState(null)
 
   const logout = async () => {
-    await axios.post(`${baseURL}/logout`)
+    await api.post('/logout')
     setRedirect('/')
     setUser(null)
   }
