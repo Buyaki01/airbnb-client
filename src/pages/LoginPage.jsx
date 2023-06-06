@@ -20,14 +20,7 @@ const LoginPage = () => {
         { withCredentials: true }
       )
       setUser(response.data)
-
-      if (response.data.accessToken) {
-        localStorage.setItem("accessToken", response.data.accessToken)
-        alert("Login successful")
-        navigate("/")
-      } else {
-        alert("Login failed")
-      }
+      navigate("/")
     } catch (error) {
       console.log(error)
       alert("An error occurred during login")

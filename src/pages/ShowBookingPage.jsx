@@ -15,9 +15,6 @@ const ShowBookingPage = () => {
       if (id) {
         try {
           const response = await axios.get(`${baseURL}/bookings/${id}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
           })
           setBooking(response.data)
         } catch (error) {

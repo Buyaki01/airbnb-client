@@ -1,36 +1,19 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import BookingDates from "./BookingDates";
-import baseURL from "../config/ApiConfig";
-import jwt_decode from "jwt-decode";
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import BookingDates from "./BookingDates"
+import baseURL from "../config/ApiConfig"
 
 const BookingsPage = () => {
-  const [bookings, setBookings] = useState([]);
-  const navigate = useNavigate();
+  const [bookings, setBookings] = useState([])
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const decodedToken = jwt_decode(token);
-    if (!decodedToken) {
-      localStorage.removeItem("token");
-      navigate("/login");
-    } else {
-      const getBookings = async () => {
-        try {
-          const response = await axios.get(`${baseURL}/bookings`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          });
-          setBookings(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      getBookings();
+    const getBookings = async () => {
+      const response = await axios.get('/bookings')
+      setBookings(response.data)
     }
-  }, [navigate]);  
+    getBookings()
+  }, [])
 
   return (
     <div>
