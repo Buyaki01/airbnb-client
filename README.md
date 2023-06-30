@@ -1,7 +1,7 @@
 # airbnb-client
 
 ## Overview
-This is the frontend of a Airbnb MERN (MongoDB, Express, React, Node.js) application that allows owners of accommodations/apartments to manage their listings. With this app, owners can easily add, edit, and delete details about their properties, making it easier for prospective clients to find and book their next vacation rental.
+This is the front end of an Airbnb MERN (MongoDB, Express, React, Node.js) application that allows owners of accommodations/apartments to manage their listings. With this app, owners can easily add, edit, and delete details about their properties, making it easier for prospective clients to find and book their next vacation rental.
 
 ## Features
 - **Add accommodations**: Owners can easily add new accommodations to the app, including details like the property's name, description, location, amenities, and pricing.
@@ -59,4 +59,4 @@ Feel free to check the [issues page](https://github.com/Buyaki01/airbnb-MERN/iss
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-- Inspiration: [@dejwid](https://github.com/dejwid)
+- Inspiration: [Dave Gray](https://www.youtube.com/@DaveGrayTeachesCode)
